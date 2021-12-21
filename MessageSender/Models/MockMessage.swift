@@ -44,6 +44,15 @@ private struct ImageMediaItem: MediaItem {
     }
 }
 
+struct MockLinkItem: LinkItem {
+    let text: String?
+    let attributedText: NSAttributedString?
+    let url: URL
+    let title: String?
+    let teaser: String
+    let thumbnailImage: UIImage
+}
+
 private struct MockAudioItem: AudioItem {
 
     var url: URL
