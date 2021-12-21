@@ -9,19 +9,30 @@
 /* Begin PBXBuildFile section */
 		DE4C2CD32771F859006EB993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2CD22771F859006EB993 /* AppDelegate.swift */; };
 		DE4C2CD52771F859006EB993 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2CD42771F859006EB993 /* SceneDelegate.swift */; };
-		DE4C2CD72771F859006EB993 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2CD62771F859006EB993 /* ViewController.swift */; };
+		DE4C2CD72771F859006EB993 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2CD62771F859006EB993 /* MessageViewController.swift */; };
 		DE4C2CDC2771F85C006EB993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4C2CDB2771F85C006EB993 /* Assets.xcassets */; };
 		DE4C2CDF2771F85C006EB993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4C2CDD2771F85C006EB993 /* LaunchScreen.storyboard */; };
+		DE4C2D1027725933006EB993 /* BasicExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D0F27725933006EB993 /* BasicExampleViewController.swift */; };
+		DE4C2D1327725A18006EB993 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = DE4C2D1227725A18006EB993 /* MessageKit */; };
+		DE4C2D1527725A53006EB993 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D1427725A53006EB993 /* ChatViewController.swift */; };
+		DE4C2D1927725B17006EB993 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D1827725B17006EB993 /* UIView+Extensions.swift */; };
+		DE4C2D1C27725C2F006EB993 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D1B27725C2F006EB993 /* MockMessage.swift */; };
+		DE4C2D1E27725C57006EB993 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D1D27725C57006EB993 /* MockUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE4C2CCF2771F859006EB993 /* MessageSender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageSender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4C2CD22771F859006EB993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4C2CD42771F859006EB993 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE4C2CD62771F859006EB993 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE4C2CD62771F859006EB993 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		DE4C2CDB2771F85C006EB993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE4C2CDE2771F85C006EB993 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE4C2CE02771F85C006EB993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE4C2D0F27725933006EB993 /* BasicExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicExampleViewController.swift; sourceTree = "<group>"; };
+		DE4C2D1427725A53006EB993 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		DE4C2D1827725B17006EB993 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		DE4C2D1B27725C2F006EB993 /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		DE4C2D1D27725C57006EB993 /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE4C2D1327725A18006EB993 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +68,33 @@
 			children = (
 				DE4C2CD22771F859006EB993 /* AppDelegate.swift */,
 				DE4C2CD42771F859006EB993 /* SceneDelegate.swift */,
-				DE4C2CD62771F859006EB993 /* ViewController.swift */,
+				DE4C2D1A27725B41006EB993 /* Models */,
+				DE4C2D1727725B00006EB993 /* Extensions */,
+				DE4C2CD62771F859006EB993 /* MessageViewController.swift */,
+				DE4C2D0F27725933006EB993 /* BasicExampleViewController.swift */,
+				DE4C2D1427725A53006EB993 /* ChatViewController.swift */,
 				DE4C2CDB2771F85C006EB993 /* Assets.xcassets */,
 				DE4C2CDD2771F85C006EB993 /* LaunchScreen.storyboard */,
 				DE4C2CE02771F85C006EB993 /* Info.plist */,
 			);
 			path = MessageSender;
+			sourceTree = "<group>";
+		};
+		DE4C2D1727725B00006EB993 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE4C2D1827725B17006EB993 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DE4C2D1A27725B41006EB993 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE4C2D1B27725C2F006EB993 /* MockMessage.swift */,
+				DE4C2D1D27725C57006EB993 /* MockUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +113,9 @@
 			dependencies = (
 			);
 			name = MessageSender;
+			packageProductDependencies = (
+				DE4C2D1227725A18006EB993 /* MessageKit */,
+			);
 			productName = MessageSender;
 			productReference = DE4C2CCF2771F859006EB993 /* MessageSender.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +144,9 @@
 				Base,
 			);
 			mainGroup = DE4C2CC62771F859006EB993;
+			packageReferences = (
+				DE4C2D1127725A18006EB993 /* XCRemoteSwiftPackageReference "MessageKit" */,
+			);
 			productRefGroup = DE4C2CD02771F859006EB993 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,8 +173,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE4C2CD72771F859006EB993 /* ViewController.swift in Sources */,
+				DE4C2D1C27725C2F006EB993 /* MockMessage.swift in Sources */,
+				DE4C2D1927725B17006EB993 /* UIView+Extensions.swift in Sources */,
+				DE4C2D1E27725C57006EB993 /* MockUser.swift in Sources */,
+				DE4C2D1027725933006EB993 /* BasicExampleViewController.swift in Sources */,
+				DE4C2CD72771F859006EB993 /* MessageViewController.swift in Sources */,
 				DE4C2CD32771F859006EB993 /* AppDelegate.swift in Sources */,
+				DE4C2D1527725A53006EB993 /* ChatViewController.swift in Sources */,
 				DE4C2CD52771F859006EB993 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +390,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE4C2D1127725A18006EB993 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE4C2D1227725A18006EB993 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE4C2D1127725A18006EB993 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE4C2CC72771F859006EB993 /* Project object */;
 }
