@@ -119,3 +119,4 @@ iOSInjectionProject/
 # Custom
 MessageSender.xcodeproj/project.xcworkspace/xcuserdata/
 MessageSender.xcodeproj/xcuserdata/
+*.xcworkspacedata
