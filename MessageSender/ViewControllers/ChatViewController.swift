@@ -67,6 +67,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
             .onNewMessage { [weak self] message in
                 self?.insertMessage(message)
+            }.onTypingStatus { [weak self] in
+                self?.setTypingIndicatorViewHidden(false)
+            }.onNewMessage { [weak self] message in
+                self?.setTypingIndicatorViewHidden(true, performUpdates: {
+                    self?.insertMessage(message)
+                })
         }
     }
     
@@ -191,6 +197,14 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     func textCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UICollectionViewCell? {
         return nil
+    }
+    
+    func setTypingIndicatorViewHidden(_ isHidden: Bool, performUpdates updates: (() -> Void)? = nil) {
+        setTypingIndicatorViewHidden(isHidden, animated: true, whilePerforming: updates) { [weak self] success in
+            if success, self?.isLastSectionVisible() == true {
+                self?.messagesCollectionView.scrollToLastItem(animated: true)
+            }
+        }
     }
 }
 
