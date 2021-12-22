@@ -80,9 +80,9 @@ final internal class SampleData {
         CLLocation(latitude: 39.3218, longitude: -113.3317)
     ]
 
-    let sounds: [URL] = [Bundle.main.url(forResource: "sound1", withExtension: "m4a")!,
-                         Bundle.main.url(forResource: "sound2", withExtension: "m4a")!
-    ]
+    //let sounds: [URL] = [Bundle.main.url(forResource: "sound1", withExtension: "m4a")!,
+    //                     Bundle.main.url(forResource: "sound2", withExtension: "m4a")!
+    //]
 
     let linkItem: (() -> MockLinkItem) = {
         MockLinkItem(
@@ -175,8 +175,10 @@ final internal class SampleData {
             let image = messageImages.random()!
             return MockMessage(thumbnail: image, user: user, messageId: uniqueID, date: date)
         case .Audio:
-            let soundURL = sounds.random()!
-            return MockMessage(audioURL: soundURL, user: user, messageId: uniqueID, date: date)
+            let imageURL: URL = messageImageURLs.random()!
+            return MockMessage(imageURL: imageURL, user: user, messageId: uniqueID, date: date)
+//            let soundURL = sounds.random()!
+//            return MockMessage(audioURL: soundURL, user: user, messageId: uniqueID, date: date)
         case .Emoji:
             return MockMessage(emoji: emojis.random()!, user: user, messageId: uniqueID, date: date)
         case .Location:

@@ -19,12 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           return
         }
         let window = UIWindow(windowScene: windowScene)
+        let navMessageViewController = UINavigationController(rootViewController: MessageViewController())
 
+        
         window.windowScene = windowScene
-        window.rootViewController = MessageViewController()
+        window.rootViewController = navMessageViewController
         window.makeKeyAndVisible()
         
         self.window = window
+        
+        if UserDefaults.isFirstLaunch() {
+            // Enable Text Messages
+            UserDefaults.standard.set(true, forKey: "Text Messages")
+        }
     }
     
 }
