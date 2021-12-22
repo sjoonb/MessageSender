@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           return
         }
         let window = UIWindow(windowScene: windowScene)
-        let navMessageViewController = UINavigationController(rootViewController: MessageViewController())
+        let navMessageViewController = UINavigationController(rootViewController: ViewController())
 
         
         window.windowScene = windowScene
