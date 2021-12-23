@@ -8,4 +8,7 @@
 import Foundation
 
 extension TimeInterval {
+    func toMilliseconds() -> Int {
+        return Int(self * 1000)
+    }
 }

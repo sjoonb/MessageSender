@@ -17,7 +17,7 @@
 		DE4C2D1E27725C57006EB993 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D1D27725C57006EB993 /* MockUser.swift */; };
 		DE4C2D2E27726AD3006EB993 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D2B27726AD2006EB993 /* ChatViewController.swift */; };
 		DE4C2D2F27726AD3006EB993 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D2C27726AD2006EB993 /* ViewController.swift */; };
-		DE4C2D3427726AF1006EB993 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D3227726AF1006EB993 /* Lorem.swift */; };
+		DE4C2D3427726AF1006EB993 /* SampleMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D3227726AF1006EB993 /* SampleMessages.swift */; };
 		DE4C2D3527726AF1006EB993 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D3327726AF1006EB993 /* SampleData.swift */; };
 		DE4C2D3727726AFF006EB993 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D3627726AFF006EB993 /* MockSocket.swift */; };
 		DE4C2D3927726B14006EB993 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C2D3827726B14006EB993 /* UserDefaults+Extensions.swift */; };
@@ -36,7 +36,7 @@
 		DE4C2D1D27725C57006EB993 /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		DE4C2D2B27726AD2006EB993 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DE4C2D2C27726AD2006EB993 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DE4C2D3227726AF1006EB993 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
+		DE4C2D3227726AF1006EB993 /* SampleMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleMessages.swift; sourceTree = "<group>"; };
 		DE4C2D3327726AF1006EB993 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		DE4C2D3627726AFF006EB993 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		DE4C2D3827726B14006EB993 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		DE4C2D3127726AF1006EB993 /* Data Generation */ = {
 			isa = PBXGroup;
 			children = (
-				DE4C2D3227726AF1006EB993 /* Lorem.swift */,
+				DE4C2D3227726AF1006EB993 /* SampleMessages.swift */,
 				DE4C2D3327726AF1006EB993 /* SampleData.swift */,
 			);
 			path = "Data Generation";
@@ -210,7 +210,7 @@
 				DE4C2D2F27726AD3006EB993 /* ViewController.swift in Sources */,
 				DE4C2CD32771F859006EB993 /* AppDelegate.swift in Sources */,
 				DE4C2D2E27726AD3006EB993 /* ChatViewController.swift in Sources */,
-				DE4C2D3427726AF1006EB993 /* Lorem.swift in Sources */,
+				DE4C2D3427726AF1006EB993 /* SampleMessages.swift in Sources */,
 				DE4C2D3927726B14006EB993 /* UserDefaults+Extensions.swift in Sources */,
 				DE4C2CD52771F859006EB993 /* SceneDelegate.swift in Sources */,
 			);

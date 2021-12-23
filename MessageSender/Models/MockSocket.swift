@@ -13,6 +13,10 @@ final class MockSocket {
     static var shared = MockSocket()
     
     private var timer: Timer?
+    private let timeInterval: TimeInterval = 0.1
+    private var counter: TimeInterval = 0
+    
+    private var messages: [MockMessage]?
     
     private var queuedMessage: MockMessage?
     
@@ -20,15 +24,14 @@ final class MockSocket {
     
     private var onTypingStatusCode: (() -> Void)?
     
-    private var connectedUsers: [MockUser] = []
-    
     private init() {}
     
     @discardableResult
-    func connect(with senders: [MockUser]) -> Self {
+    func connect() -> Self {
         disconnect()
-        connectedUsers = senders
-        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: false)
+
         return self
     }
     
@@ -55,14 +58,22 @@ final class MockSocket {
     
     @objc
     private func handleTimer() {
-        if let message = queuedMessage {
-            onNewMessageCode?(message)
-            queuedMessage = nil
-        } else {
-            let sender = connectedUsers.random()!
-            let message = SampleData.shared.randomMessage(allowedSenders: [sender])
-            queuedMessage = message
+        if let message = SampleData.shared.sequenceMessage() {
+            
             onTypingStatusCode?()
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(SampleData.shared.onTypingTimeInterval.toMilliseconds())) {
+                self.onNewMessageCode?(message)
+                
+                self.timer?.invalidate()
+                self.timer = Timer.scheduledTimer(timeInterval: SampleData.shared.timeInterval, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: false)
+                
+                SampleData.shared.update()
+            }
+            
+        } else {
+            self.timer?.invalidate()
         }
     }
+    
 }

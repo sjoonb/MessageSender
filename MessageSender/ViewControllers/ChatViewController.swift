@@ -42,14 +42,13 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         configureMessageCollectionView()
         messageInputBar.isHidden = true
         
-        loadFirstMessages()
         title = "MessageKit"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
+        MockSocket.shared.connect()
             .onNewMessage { [weak self] message in
                 self?.setTypingIndicatorViewHidden(true, performUpdates: {
                     self?.insertMessage(message)
@@ -66,19 +65,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    func loadFirstMessages() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let count = UserDefaults.standard.mockMessagesCount()
-            SampleData.shared.getMessages(count: count) { messages in
-                DispatchQueue.main.async {
-                    self.messageList = messages
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToLastItem()
-                }
-            }
-        }
     }
     
     func configureMessageCollectionView() {
@@ -119,7 +105,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     // MARK: - MessagesDataSource
 
     func currentSender() -> SenderType {
-        return SampleData.shared.currentSender
+        return MockUser(senderId: "", displayName: "")
     }
 
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
