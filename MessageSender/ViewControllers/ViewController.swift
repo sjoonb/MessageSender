@@ -13,6 +13,7 @@ class ViewController: ChatViewController {
         super.configureMessageCollectionView()
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
     }
 
     func textCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator? {
@@ -27,17 +28,6 @@ extension ViewController: MessagesDisplayDelegate {
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? .white : .darkText
-    }
-    
-    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
-        switch detector {
-        case .hashtag, .mention: return [.foregroundColor: UIColor.blue]
-        default: return MessageLabel.defaultAttributes
-        }
-    }
-    
-    func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
-        return [.url, .address, .phoneNumber, .date, .transitInformation, .mention, .hashtag]
     }
     
     // MARK: - All Messages
@@ -57,14 +47,6 @@ extension ViewController: MessagesDisplayDelegate {
         avatarView.set(avatar: avatar)
     }
 
-//    func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-//        if case MessageKind.photo(let media) = message.kind, let imageURL = media.url {
-//            imageView.kf.setImage(with: imageURL)
-//        } else {
-//            imageView.kf.cancelDownloadTask()
-//        }
-//    }
-    
 }
 
 extension ViewController: MessagesLayoutDelegate {
