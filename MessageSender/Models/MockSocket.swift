@@ -13,12 +13,6 @@ final class MockSocket {
     static var shared = MockSocket()
     
     private var timer: Timer?
-    private let timeInterval: TimeInterval = 0.1
-    private var counter: TimeInterval = 0
-    
-    private var messages: [MockMessage]?
-    
-    private var queuedMessage: MockMessage?
     
     private var onNewMessageCode: ((MockMessage) -> Void)?
     
