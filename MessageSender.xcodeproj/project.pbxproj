@@ -110,8 +110,8 @@
 		DE4C2D2A27726AD2006EB993 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DE4C2D2B27726AD2006EB993 /* ChatViewController.swift */,
 				DE4C2D2C27726AD2006EB993 /* ViewController.swift */,
+				DE4C2D2B27726AD2006EB993 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
