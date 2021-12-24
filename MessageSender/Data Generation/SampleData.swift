@@ -15,7 +15,8 @@ final internal class SampleData {
     static let shared = SampleData()
     private init() {}
     
-    let sender = MockUser(senderId: "000000", displayName: "Steve Jobs")
+    let assistant = MockUser(senderId: "000000", displayName: "Steve Jobs")
+    let user = MockUser(senderId: "000001", displayName: "User")
     
     var messageCount: Int = 0
 
@@ -27,6 +28,14 @@ final internal class SampleData {
         return SampleMessages.messageList[messageCount].onTypingTimeInterval
     }
     
+    var waitForReply: Bool {
+        return SampleMessages.messageList[messageCount].waitForReply
+    }
+    
+    var replyText: String {
+        return SampleMessages.messageList[messageCount].replyText
+    }
+    
     func sequenceMessage() -> MockMessage? {
         if messageCount >= SampleMessages.messageList.count {
             return nil
@@ -36,20 +45,25 @@ final internal class SampleData {
         let date = Date.init()
         let text = SampleMessages.messageList[messageCount].text
 
-        return MockMessage(text: text, user: sender, messageId: uniqueID, date: date)
+        return MockMessage(text: text, user: assistant, messageId: uniqueID, date: date)
     }
     
     func update() {
         messageCount += 1
     }
     
-    func getAvatar() -> Avatar {
+    func getAvatarFor(sender: SenderType) -> Avatar {
         let firstName = sender.displayName.components(separatedBy: " ").first
         let lastName = sender.displayName.components(separatedBy: " ").first
         let initials = "\(firstName?.first ?? "A")\(lastName?.first ?? "A")"
-     
-        let image = UIImage(named: "Steve-Jobs")
-        return Avatar(image: image, initials: initials)
+        switch sender.senderId {
+        case "000000":
+            return Avatar(image: #imageLiteral(resourceName: "Steve-Jobs"), initials: initials)
+        case "000001":
+            return Avatar(image: #imageLiteral(resourceName: "Steven-Deutsch"), initials: initials)
+        default:
+            return Avatar(image: nil, initials: initials)
+        }
     }
     
 }

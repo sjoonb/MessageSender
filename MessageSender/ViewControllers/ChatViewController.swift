@@ -40,7 +40,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         super.viewDidLoad()
         
         configureMessageCollectionView()
-        messageInputBar.isHidden = true
+        configureMessageInputBar()
         
         title = "MessageKit"
     }
@@ -55,6 +55,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
                 })
             }.onTypingStatus { [weak self] in
                 self?.setTypingIndicatorViewHidden(false)
+            }.onNewButton { [weak self] button in
+                self?.showInputButton(button)
+            }.onButtonTapped { [weak self] message in
+                self?.insertMessage(message)
+                self?.hideInputButton()
             }
     }
     
@@ -76,6 +81,14 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     }
     
     
+    func configureMessageInputBar() {
+        messageInputBar.separatorLine.isHidden = true
+        messageInputBar.setRightStackViewWidthConstant(to: 0, animated: false)
+        messageInputBar.isHidden = true
+    }
+
+    
+    
     // MARK: - Helpers
     
     func insertMessage(_ message: MockMessage) {
@@ -93,6 +106,30 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         })
     }
     
+    func showInputButton(_ button: UIButton) {
+        messageInputBar.isHidden = false
+        messageInputBar.setMiddleContentView(button, animated: false)
+        messageInputBar.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseIn, animations: {
+            self.messageInputBar.alpha = 1
+            
+        }) { complted in
+        }
+        
+    }
+    
+    func hideInputButton() {
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.messageInputBar.alpha = 0
+            
+        }) { complted in
+        }
+        
+        messageInputBar.isHidden = false
+    }
+    
     func isLastSectionVisible() -> Bool {
         
         guard !messageList.isEmpty else { return false }
@@ -105,7 +142,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     // MARK: - MessagesDataSource
 
     func currentSender() -> SenderType {
-        return MockUser(senderId: "", displayName: "")
+        return SampleData.shared.user
     }
 
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {

@@ -18,6 +18,19 @@ final class MockSocket {
     
     private var onTypingStatusCode: (() -> Void)?
     
+    private var onNewButtonCode: ((UIButton) -> Void)?
+    
+    private var onButtonTappedCode: ((MockMessage) -> Void)?
+    
+    lazy var replyButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 16
+        button.backgroundColor = .primaryColor
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .highlighted)
+        return button
+    }()
+ 
     private init() {}
     
     @discardableResult
@@ -50,24 +63,52 @@ final class MockSocket {
         return self
     }
     
+    @discardableResult
+    func onNewButton(code: @escaping (UIButton) -> Void) -> Self {
+        onNewButtonCode = code
+        return self
+    }
+    
+    @discardableResult
+    func onButtonTapped(code: @escaping (MockMessage) -> Void) -> Self {
+        onButtonTappedCode = code
+        return self
+    }
+    
+    
     @objc
     private func handleTimer() {
-        if let message = SampleData.shared.sequenceMessage() {
+        guard let message = SampleData.shared.sequenceMessage() else { timer?.invalidate(); return }
             
-            onTypingStatusCode?()
+        onTypingStatusCode?()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(SampleData.shared.onTypingTimeInterval.toMilliseconds())) {
+            self.onNewMessageCode?(message)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(SampleData.shared.onTypingTimeInterval.toMilliseconds())) {
-                self.onNewMessageCode?(message)
+            if(SampleData.shared.waitForReply) {
+                self.replyButton.setTitle(SampleData.shared.replyText, for: .normal)
+                self.replyButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+                self.onNewButtonCode?(self.replyButton)
                 
-                self.timer?.invalidate()
-                self.timer = Timer.scheduledTimer(timeInterval: SampleData.shared.timeInterval, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: false)
-                
-                SampleData.shared.update()
+            } else {
+                self.resetTimer()
             }
-            
-        } else {
-            self.timer?.invalidate()
         }
     }
     
+    @objc
+    private func buttonTapped() {
+        let message = MockMessage(text: SampleData.shared.replyText, user: SampleData.shared.user, messageId: UUID().uuidString, date: Date())
+        onButtonTappedCode?(message)
+        resetTimer()
+    }
+    
+    private func resetTimer() {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: SampleData.shared.timeInterval, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: false)
+        
+        SampleData.shared.update()
+    }
+    
+ 
 }
